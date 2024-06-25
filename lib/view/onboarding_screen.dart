@@ -4,11 +4,18 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../widgets/intro_screen.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
   OnBoardingScreen({super.key});
 
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   PageController _controller = PageController();
+
   bool onLastPage = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +24,9 @@ class OnBoardingScreen extends StatelessWidget {
         children: [
           PageView(
             onPageChanged: (index) {
-              // set state
-              onLastPage = (index == 2);
+              setState(() {
+                onLastPage = (index == 2);
+              });
             },
             controller: _controller,
             children: [
@@ -89,7 +97,7 @@ class OnBoardingScreen extends StatelessWidget {
                         child: const Icon(
                           Icons.arrow_right_alt,
                           color: Color(0xff0078FF),
-                          size: 50,
+                          size: 24,
                         ),
                       )
                     : GestureDetector(
